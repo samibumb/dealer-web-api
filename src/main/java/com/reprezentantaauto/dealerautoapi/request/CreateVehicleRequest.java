@@ -1,5 +1,6 @@
 package com.reprezentantaauto.dealerautoapi.request;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -25,9 +26,15 @@ public class CreateVehicleRequest {
     private String transmission;
 
     @NotNull
+    @Min(20000)
+    @Max(100000)
     private double price;
 
     private String imagePath;
+
+    @NotNull
+    @Min(0)
+    private int quantity;
 
 
     public String getBrand() {

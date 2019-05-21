@@ -3,6 +3,9 @@ package com.reprezentantaauto.dealerautoapi.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Vehicle {
@@ -12,21 +15,35 @@ public class Vehicle {
     @GeneratedValue
     private long id;
 
+    @NotNull
     private String brand;
 
+    @NotNull
     private String model;
 
+    @NotNull
+    @Min(2018)
     private int year;
 
+    @NotNull
     private String fuel;
 
+    @NotNull
     private double engine_size;
 
+    @NotNull
     private String transmission;
 
+    @NotNull
+    @Min(20000)
+    @Max(100000)
     private double price;
 
     private String imagePath;
+
+    @NotNull
+    @Min(0)
+    private int quantity;
 
     public long getId() {
         return id;
@@ -98,5 +115,13 @@ public class Vehicle {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
