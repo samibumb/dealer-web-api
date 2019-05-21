@@ -35,8 +35,6 @@ public class Vehicle {
     private String transmission;
 
     @NotNull
-    @Min(20000)
-    @Max(100000)
     private double price;
 
     private String imagePath;

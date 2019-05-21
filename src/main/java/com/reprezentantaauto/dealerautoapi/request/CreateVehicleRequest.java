@@ -26,8 +26,6 @@ public class CreateVehicleRequest {
     private String transmission;
 
     @NotNull
-    @Min(20000)
-    @Max(100000)
     private double price;
 
     private String imagePath;
@@ -99,6 +97,14 @@ public class CreateVehicleRequest {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
