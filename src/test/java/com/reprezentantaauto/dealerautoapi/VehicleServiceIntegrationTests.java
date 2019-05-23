@@ -28,23 +28,25 @@ public class VehicleServiceIntegrationTests {
 
 		CreateVehicleRequest vehicleRequest = new CreateVehicleRequest();
 		vehicleRequest.setBrand("Audi");
-		vehicleRequest.setModel("A7");
+		vehicleRequest.setModel("A4");
 		vehicleRequest.setYear(2018);
 		vehicleRequest.setFuel("Diesel");
-		vehicleRequest.setEngine_size(3.000);
-		vehicleRequest.setTransmission("4x4");
-		vehicleRequest.setPrice(50.000);
-		vehicleRequest.setQuantity(10);
+		vehicleRequest.setEngine_size(2.000);
+		vehicleRequest.setTransmission("2x4");
+		vehicleRequest.setPrice(30.000);
+		vehicleRequest.setQuantity(5);
 
-		Vehicle createdVehicle = vehicleService.createVehicle(vehicleRequest);
+		Vehicle createdVehicle = vehicleService.create(vehicleRequest);
 
 		assertThat(createdVehicle,notNullValue());
-		assertThat(createdVehicle.getId(),greaterThan(new Long(0)));
+		assertThat(createdVehicle.getId(),greaterThan(0L));
 		assertThat(createdVehicle.getBrand(),is(vehicleRequest.getBrand()));
 		assertThat(createdVehicle.getModel(),is(vehicleRequest.getModel()));
 		assertThat(createdVehicle.getYear(),is(vehicleRequest.getYear()));
 		assertThat(createdVehicle.getEngine_size(),is(vehicleRequest.getEngine_size()));
 		assertThat(createdVehicle.getTransmission(),is(vehicleRequest.getTransmission()));
+		assertThat(createdVehicle.getPrice(),is(vehicleRequest.getPrice()));
+		assertThat(createdVehicle.getQuantity(),is(vehicleRequest.getQuantity()));
 
 
 	}
@@ -54,7 +56,7 @@ public class VehicleServiceIntegrationTests {
 	public void testCreateVehicle_whenMissingMandatoryProperties_thenThrowException(){
 		CreateVehicleRequest request = new CreateVehicleRequest();
 
-		vehicleService.createVehicle(request);
+		vehicleService.create(request);
 
 	}
 }

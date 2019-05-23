@@ -8,26 +8,19 @@ public class CreateVehicleRequest {
 
     @NotNull
     private String brand;
-
     @NotNull
     private String model;
-
     @NotNull
     @Min(2018)
     private int year;
-
     @NotNull
     private String fuel;
-
     @NotNull
     private double engine_size;
-
     @NotNull
     private String transmission;
-
     @NotNull
     private double price;
-
     private String imagePath;
 
     @NotNull
