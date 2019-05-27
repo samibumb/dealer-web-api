@@ -1,6 +1,6 @@
 package com.reprezentantaauto.dealerautoapi.service;
 
-import com.reprezentantaauto.dealerautoapi.domain.Vehicle;
+import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.repository.VehicleRepository;
 import com.reprezentantaauto.dealerautoapi.request.CreateVehicleRequest;
 import org.slf4j.Logger;

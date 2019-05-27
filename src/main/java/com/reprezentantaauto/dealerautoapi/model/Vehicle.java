@@ -1,4 +1,4 @@
-package com.reprezentantaauto.dealerautoapi.domain;
+package com.reprezentantaauto.dealerautoapi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

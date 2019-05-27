@@ -1,6 +1,6 @@
 package com.reprezentantaauto.dealerautoapi.controller;
 
-import com.reprezentantaauto.dealerautoapi.domain.Vehicle;
+import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.request.CreateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;

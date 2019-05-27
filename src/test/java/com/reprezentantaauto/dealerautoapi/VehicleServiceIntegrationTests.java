@@ -1,6 +1,6 @@
 package com.reprezentantaauto.dealerautoapi;
 
-import com.reprezentantaauto.dealerautoapi.domain.Vehicle;
+import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.request.CreateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.service.VehicleService;
 import org.junit.Test;
