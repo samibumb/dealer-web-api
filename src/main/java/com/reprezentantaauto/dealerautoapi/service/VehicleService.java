@@ -1,10 +1,13 @@
 package com.reprezentantaauto.dealerautoapi.service;
 
+import com.reprezentantaauto.dealerautoapi.dto.UpdateVehicleRequest;
+import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.repository.VehicleRepository;
-import com.reprezentantaauto.dealerautoapi.request.CreateVehicleRequest;
+import com.reprezentantaauto.dealerautoapi.dto.CreateVehicleRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,13 +55,18 @@ public class VehicleService {
         return vehicleRepository.findAll();
     }
 
-    public Vehicle findById(Long id) {
-        Optional<Vehicle> vehicle = vehicleRepository.findById(id);
-        if(vehicle.isPresent()) {
-            return vehicle.get();
-        }
+    public Vehicle findById(Long id) throws ResourceNotFoundException {
+        return vehicleRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Vehicle "+id+" does not exist"));
 
-        return null;
+    }
+
+    public Vehicle updateVehicle(long id, UpdateVehicleRequest updateVehicleRequest) throws ResourceNotFoundException{
+        Vehicle vehicle = new Vehicle();
+
+        BeanUtils.copyProperties(updateVehicleRequest,vehicle);
+
+        return vehicleRepository.save(vehicle);
+
     }
 
     @Transactional
