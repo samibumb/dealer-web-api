@@ -1,9 +1,9 @@
-package com.reprezentantaauto.dealerautoapi.dto;
+package com.reprezentantaauto.dealerautoapi.vehicleDTO;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class CreateVehicleRequest {
+public class UpdateVehicleRequest {
 
     @NotNull
     private String brand;
