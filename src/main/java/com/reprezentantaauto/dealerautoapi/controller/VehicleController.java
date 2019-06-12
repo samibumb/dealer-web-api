@@ -1,9 +1,9 @@
 package com.reprezentantaauto.dealerautoapi.controller;
 
-import com.reprezentantaauto.dealerautoapi.dto.UpdateVehicleRequest;
+import com.reprezentantaauto.dealerautoapi.vehicleDTO.UpdateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
-import com.reprezentantaauto.dealerautoapi.dto.CreateVehicleRequest;
+import com.reprezentantaauto.dealerautoapi.vehicleDTO.CreateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
