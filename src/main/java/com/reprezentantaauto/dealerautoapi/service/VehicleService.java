@@ -1,10 +1,10 @@
 package com.reprezentantaauto.dealerautoapi.service;
 
-import com.reprezentantaauto.dealerautoapi.dto.UpdateVehicleRequest;
+import com.reprezentantaauto.dealerautoapi.vehicleDTO.UpdateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.repository.VehicleRepository;
-import com.reprezentantaauto.dealerautoapi.dto.CreateVehicleRequest;
+import com.reprezentantaauto.dealerautoapi.vehicleDTO.CreateVehicleRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VehicleService {
