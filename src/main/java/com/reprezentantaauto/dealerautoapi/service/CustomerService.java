@@ -1,11 +1,8 @@
 package com.reprezentantaauto.dealerautoapi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reprezentantaauto.dealerautoapi.customerDTO.CreateCustomerRequest;
-import com.reprezentantaauto.dealerautoapi.customerDTO.GetCustomerRequest;
-import com.reprezentantaauto.dealerautoapi.customerDTO.UpdateCustomerRequest;
+import com.reprezentantaauto.dealerautoapi.customerDTO.CustomerDto;
 import com.reprezentantaauto.dealerautoapi.exception.CustomerNotFoundException;
-import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Customer;
 import com.reprezentantaauto.dealerautoapi.repository.CustomerRepository;
 import org.slf4j.Logger;
@@ -33,10 +30,10 @@ public class CustomerService {
 
     //creating CRUD operations
 
-    public Customer createCustomer(CreateCustomerRequest createCustomerRequest){
-        LOGGER.info("Creating Customer {}",createCustomerRequest);
+    public Customer createCustomer(CustomerDto dto){
+        LOGGER.info("Creating Customer {}",dto);
 
-        Customer customer=objectMapper.convertValue(createCustomerRequest,Customer.class);
+        Customer customer=objectMapper.convertValue(dto,Customer.class);
 
         return customerRepository.save(customer);
 
@@ -63,14 +60,15 @@ public class CustomerService {
 
         LOGGER.info("Getting customer by id {}",id);
         return customerRepository.findById(id).orElseThrow(()->new CustomerNotFoundException("Customer "+id+" does not exist."));
+
     }
 
-    public Customer updateCustomer(Long id ,UpdateCustomerRequest updateCustomerRequest) throws CustomerNotFoundException {
+    public Customer updateCustomer(Long id ,CustomerDto dto) throws CustomerNotFoundException {
 
-        LOGGER.info("Update customer {} with {}",id,updateCustomerRequest);
+        LOGGER.info("Update customer {} with {}",id,dto);
         Customer customer = getCustomer(id);
 
-        BeanUtils.copyProperties(updateCustomerRequest,customer);
+        BeanUtils.copyProperties(dto,customer);
 
         return customerRepository.save(customer);
     }
