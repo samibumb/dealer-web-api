@@ -1,8 +1,8 @@
 package com.reprezentantaauto.dealerautoapi;
 
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
-import com.reprezentantaauto.dealerautoapi.vehicleDTO.CreateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.service.VehicleService;
+import com.reprezentantaauto.dealerautoapi.dto.VehicleDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class VehicleServiceIntegrationTests {
 	@Test
 	public void testCreateVehicle_whenValidRequest_thenReturnCreatedVehicle() {
 
-		CreateVehicleRequest vehicleRequest = new CreateVehicleRequest();
+		VehicleDto vehicleRequest = new VehicleDto();
 		vehicleRequest.setBrand("Audi");
 		vehicleRequest.setModel("A4");
 		vehicleRequest.setYear(2018);
@@ -54,7 +54,7 @@ public class VehicleServiceIntegrationTests {
 	@Test(expected = ConstraintViolationException.class)
 
 	public void testCreateVehicle_whenMissingMandatoryProperties_thenThrowException(){
-		CreateVehicleRequest request = new CreateVehicleRequest();
+		VehicleDto request = new VehicleDto();
 
 		vehicleService.create(request);
 
