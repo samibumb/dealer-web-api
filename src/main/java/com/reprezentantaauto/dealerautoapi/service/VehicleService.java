@@ -1,10 +1,10 @@
 package com.reprezentantaauto.dealerautoapi.service;
 
-import com.reprezentantaauto.dealerautoapi.vehicleDTO.UpdateVehicleRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.repository.VehicleRepository;
-import com.reprezentantaauto.dealerautoapi.vehicleDTO.CreateVehicleRequest;
+import com.reprezentantaauto.dealerautoapi.dto.VehicleDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -22,13 +22,15 @@ public class VehicleService {
     //inversion of control(vehicleRepository obj gives control to VehicleService class) & dependency injection
 
     private final VehicleRepository vehicleRepository;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public VehicleService(VehicleRepository vehicleRepository) {
+    public VehicleService(VehicleRepository vehicleRepository,ObjectMapper objectMapper) {
         this.vehicleRepository = vehicleRepository;
+        this.objectMapper = objectMapper;
     }
 
-    public Vehicle create(CreateVehicleRequest vehicleRequest) {
+    public Vehicle create(VehicleDto vehicleRequest) {
 
         LOGGER.info("Creating object {}",vehicleRequest);
 
@@ -44,6 +46,10 @@ public class VehicleService {
         vehicle.setQuantity(vehicleRequest.getQuantity());
 
         return vehicleRepository.save(vehicle);
+
+//        Vehicle vehicle1 = objectMapper.convertValue(vehicleRequest,Vehicle.class);
+//
+//        return vehicleRepository.save(vehicle1);
     }
 
     public void deleteById(long id) {
@@ -59,7 +65,7 @@ public class VehicleService {
 
     }
 
-    public Vehicle updateVehicle(long id, UpdateVehicleRequest updateVehicleRequest) throws ResourceNotFoundException{
+    public Vehicle updateVehicle(long id, VehicleDto updateVehicleRequest) throws ResourceNotFoundException{
         Vehicle vehicle = new Vehicle();
 
         BeanUtils.copyProperties(updateVehicleRequest,vehicle);
