@@ -64,4 +64,12 @@ public class VehicleController {
         service.updateVehicle(id,updateVehicleRequest);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("{Brand}/{Model}")
+    public ResponseEntity<Vehicle> findByBrandAndModel(@PathVariable("Brand") String brand,@PathVariable("Model") String model){
+
+        Vehicle response = service.findByBrandAndModel(brand,model);
+
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
 }
