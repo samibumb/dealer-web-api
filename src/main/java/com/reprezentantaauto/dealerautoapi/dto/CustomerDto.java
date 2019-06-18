@@ -1,4 +1,4 @@
-package com.reprezentantaauto.dealerautoapi.customerDTO;
+package com.reprezentantaauto.dealerautoapi.dto;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;

@@ -1,9 +1,9 @@
-package com.reprezentantaauto.dealerautoapi.vehicleDTO;
+package com.reprezentantaauto.dealerautoapi.dto;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class GetVehicleRequest {
+public class VehicleDto {
 
     @NotNull
     private String brand;
@@ -101,7 +101,7 @@ public class GetVehicleRequest {
 
     @Override
     public String toString() {
-        return "CreateVehicleRequest{" +
+        return "Vehicle DTO{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
