@@ -3,7 +3,7 @@ package com.reprezentantaauto.dealerautoapi.customerDTO;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class GetCustomerRequest {
+public class CustomerDto {
 
     @NotNull
     private String firstName;
@@ -54,7 +54,7 @@ public class GetCustomerRequest {
 
     @Override
     public String toString() {
-        return "CreateCustomerRequest{" +
+        return "Customer DTO{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
