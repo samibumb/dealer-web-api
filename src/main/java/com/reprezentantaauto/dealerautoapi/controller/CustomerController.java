@@ -1,7 +1,7 @@
 package com.reprezentantaauto.dealerautoapi.controller;
 
 
-import com.reprezentantaauto.dealerautoapi.customerDTO.CustomerDto;
+import com.reprezentantaauto.dealerautoapi.dto.CustomerDto;
 import com.reprezentantaauto.dealerautoapi.exception.CustomerNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Customer;
 import com.reprezentantaauto.dealerautoapi.service.CustomerService;

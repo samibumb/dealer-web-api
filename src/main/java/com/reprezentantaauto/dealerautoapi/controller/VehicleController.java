@@ -1,10 +1,9 @@
 package com.reprezentantaauto.dealerautoapi.controller;
 
-import com.reprezentantaauto.dealerautoapi.vehicleDTO.UpdateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
-import com.reprezentantaauto.dealerautoapi.vehicleDTO.CreateVehicleRequest;
 import com.reprezentantaauto.dealerautoapi.service.VehicleService;
+import com.reprezentantaauto.dealerautoapi.dto.VehicleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +42,7 @@ public class VehicleController {
     }
 
     @PostMapping("create")
-    public Vehicle create(@RequestBody CreateVehicleRequest vehicleRequest) {
+    public Vehicle create(@RequestBody VehicleDto vehicleRequest) {
         return service.create(vehicleRequest);
     }
 
@@ -60,7 +59,7 @@ public class VehicleController {
     }
 
     @PutMapping("{id}")
-   public ResponseEntity updateVehicle(@PathVariable("id") Long id,@RequestBody @Valid UpdateVehicleRequest updateVehicleRequest) throws ResourceNotFoundException {
+   public ResponseEntity updateVehicle(@PathVariable("id") Long id,@RequestBody @Valid VehicleDto updateVehicleRequest) throws ResourceNotFoundException {
 
         service.updateVehicle(id,updateVehicleRequest);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
