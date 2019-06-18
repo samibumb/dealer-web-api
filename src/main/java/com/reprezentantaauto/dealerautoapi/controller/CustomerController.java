@@ -1,8 +1,7 @@
 package com.reprezentantaauto.dealerautoapi.controller;
 
 
-import com.reprezentantaauto.dealerautoapi.customerDTO.CreateCustomerRequest;
-import com.reprezentantaauto.dealerautoapi.customerDTO.UpdateCustomerRequest;
+import com.reprezentantaauto.dealerautoapi.customerDTO.CustomerDto;
 import com.reprezentantaauto.dealerautoapi.exception.CustomerNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Customer;
 import com.reprezentantaauto.dealerautoapi.service.CustomerService;
@@ -25,15 +24,15 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @PostMapping("create")
-    public ResponseEntity<Customer> create(@RequestBody @Valid CreateCustomerRequest createCustomerRequest){
+    @PostMapping("createCustomer")
+    public ResponseEntity<Customer> create(@RequestBody @Valid CustomerDto createDto){
 
-       Customer response = customerService.createCustomer(createCustomerRequest);
+       Customer response = customerService.createCustomer(createDto);
 
        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("getAll")
+    @GetMapping("getAllCustomers")
     public ResponseEntity<List<Customer>> getCustomers(){
 
        List<Customer> customers = customerService.getCustomers();
@@ -50,15 +49,15 @@ public class CustomerController {
 
     }
 
-    @PutMapping("update/{id}")
-    public ResponseEntity updateCustomer(@PathVariable("id") Long id, @RequestBody @Valid UpdateCustomerRequest updateCustomerRequest) throws CustomerNotFoundException {
+    @PutMapping("updateCustomer/{id}")
+    public ResponseEntity updateCustomer(@PathVariable("id") Long id, @RequestBody @Valid CustomerDto updateDto) throws CustomerNotFoundException {
 
-        customerService.updateCustomer(id, updateCustomerRequest);
+        customerService.updateCustomer(id, updateDto);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("deleteCustomer/{id}")
     public ResponseEntity deleteCustomer(@PathVariable("id") Long id){
 
         customerService.deleteCustomer(id);
