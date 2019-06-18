@@ -9,5 +9,5 @@ public interface VehicleRepository extends JpaRepository<Vehicle , Long> {
 
     void deleteByIdAndBrand(long id, String brand);
 
-
+    Vehicle findByBrandAndAndModel(String brand, String model);
 }
