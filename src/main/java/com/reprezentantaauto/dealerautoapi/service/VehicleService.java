@@ -85,4 +85,9 @@ public class VehicleService {
         vehicleRepository.deleteByIdAndBrand(id,brand);
     }
 
+    public Vehicle findByBrandAndModel(String brand , String model){
+
+       return vehicleRepository.findByBrandAndAndModel(brand,model);
+    }
+
 }
