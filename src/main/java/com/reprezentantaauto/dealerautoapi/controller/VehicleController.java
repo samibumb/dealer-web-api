@@ -46,13 +46,13 @@ public class VehicleController {
         return service.create(vehicleRequest);
     }
 
-    @DeleteMapping("delete")
+    @DeleteMapping("deleteByBrand")
     public void deleteByBrand(@RequestParam(value = "brand") String brand){
 
         service.deleteByBrand(brand);
     }
 
-    @DeleteMapping("deleteBy")
+    @DeleteMapping("deleteByIdAndBrand")
     public void deleteByIdAndBrand(@RequestParam(value = "id") long id , @RequestParam(value = "brand") String brand){
 
         service.deleteByIdAndBrand(id, brand);
@@ -65,7 +65,7 @@ public class VehicleController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("{Brand}/{Model}")
+    @GetMapping("findByBrandAndModel/{Brand}/{Model}")
     public ResponseEntity<Vehicle> findByBrandAndModel(@PathVariable("Brand") String brand,@PathVariable("Model") String model){
 
         Vehicle response = service.findByBrandAndModel(brand,model);
