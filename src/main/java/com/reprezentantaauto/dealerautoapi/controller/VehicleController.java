@@ -1,6 +1,6 @@
 package com.reprezentantaauto.dealerautoapi.controller;
 
-import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
+import com.reprezentantaauto.dealerautoapi.exception.VehicleNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.service.VehicleService;
 import com.reprezentantaauto.dealerautoapi.dto.VehicleDto;
@@ -29,7 +29,7 @@ public class VehicleController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Vehicle> getById(@PathVariable("id") Long id) throws ResourceNotFoundException {
+    public ResponseEntity<Vehicle> getById(@PathVariable("id") Long id) throws VehicleNotFoundException {
          Vehicle response = service.findById(id);
 
         return new ResponseEntity<>(response,HttpStatus.NO_CONTENT);
@@ -59,7 +59,7 @@ public class VehicleController {
     }
 
     @PutMapping("{id}")
-   public ResponseEntity updateVehicle(@PathVariable("id") Long id,@RequestBody @Valid VehicleDto updateVehicleRequest) throws ResourceNotFoundException {
+   public ResponseEntity updateVehicle(@PathVariable("id") Long id,@RequestBody @Valid VehicleDto updateVehicleRequest) throws VehicleNotFoundException {
 
         service.updateVehicle(id,updateVehicleRequest);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -1,7 +1,7 @@
 package com.reprezentantaauto.dealerautoapi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reprezentantaauto.dealerautoapi.exception.ResourceNotFoundException;
+import com.reprezentantaauto.dealerautoapi.exception.VehicleNotFoundException;
 import com.reprezentantaauto.dealerautoapi.model.Vehicle;
 import com.reprezentantaauto.dealerautoapi.repository.VehicleRepository;
 import com.reprezentantaauto.dealerautoapi.dto.VehicleDto;
@@ -60,13 +60,13 @@ public class VehicleService {
         return vehicleRepository.findAll();
     }
 
-    public Vehicle findById(Long id) throws ResourceNotFoundException {
-        return vehicleRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Vehicle "+id+" does not exist"));
+    public Vehicle findById(Long id) throws VehicleNotFoundException {
+        return vehicleRepository.findById(id).orElseThrow(()->new VehicleNotFoundException("Vehicle "+id+" does not exist"));
 
     }
 
-    public Vehicle updateVehicle(long id, VehicleDto updateVehicleRequest) throws ResourceNotFoundException{
-        Vehicle vehicle = new Vehicle();
+    public Vehicle updateVehicle(long id, VehicleDto updateVehicleRequest) throws VehicleNotFoundException {
+        Vehicle vehicle = findById(id);
 
         BeanUtils.copyProperties(updateVehicleRequest,vehicle);
 
