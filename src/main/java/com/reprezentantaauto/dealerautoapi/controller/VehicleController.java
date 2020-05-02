@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/vehicles/")
+@CrossOrigin
 public class VehicleController {
 
     private final VehicleService service;
@@ -35,10 +36,11 @@ public class VehicleController {
         return new ResponseEntity<>(response,HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("{id}")
-    public List<Vehicle> deleteById(@PathVariable("id") Long id){
-        service.deleteById(id);
-        return service.findAll();
+    @DeleteMapping("deleteById/{id}")
+    public ResponseEntity deleteById(@PathVariable("id") Long id){
+       service.deleteById(id);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping("create")
@@ -58,7 +60,7 @@ public class VehicleController {
         service.deleteByIdAndBrand(id, brand);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("updateCar/{id}")
    public ResponseEntity updateVehicle(@PathVariable("id") Long id,@RequestBody @Valid VehicleDto updateVehicleRequest) throws VehicleNotFoundException {
 
         service.updateVehicle(id,updateVehicleRequest);

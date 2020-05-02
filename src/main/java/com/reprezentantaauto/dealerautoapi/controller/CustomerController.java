@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/vehicleCustomers/")
+@CrossOrigin
 public class CustomerController {
 
     private final CustomerService customerService;

@@ -27,6 +27,7 @@ public class VehicleDto {
     private int quantity;
 
 
+
     public String getBrand() {
         return brand;
     }
@@ -101,8 +102,8 @@ public class VehicleDto {
 
     @Override
     public String toString() {
-        return "Vehicle DTO{" +
-                "brand='" + brand + '\'' +
+        return "VehicleDto{" +
+                ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
                 ", fuel='" + fuel + '\'' +
@@ -110,6 +111,7 @@ public class VehicleDto {
                 ", transmission='" + transmission + '\'' +
                 ", price=" + price +
                 ", imagePath='" + imagePath + '\'' +
+                ", quantity=" + quantity +
                 '}';
     }
 }

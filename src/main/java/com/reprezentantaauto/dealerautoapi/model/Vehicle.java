@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -21,26 +20,18 @@ public class Vehicle {
     @NotNull
     private String model;
 
-    @NotNull
-    @Min(2018)
     private int year;
 
-    @NotNull
     private String fuel;
 
-    @NotNull
     private double engine_size;
 
-    @NotNull
     private String transmission;
 
-    @NotNull
     private double price;
 
     private String imagePath;
 
-    @NotNull
-    @Min(0)
     private int quantity;
 
     public long getId() {

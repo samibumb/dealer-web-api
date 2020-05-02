@@ -54,6 +54,7 @@ public class VehicleService {
 
     public void deleteById(long id) {
         vehicleRepository.deleteById(id);
+
     }
 
     public List<Vehicle> findAll() {
